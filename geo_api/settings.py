@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "django.contrib.gis",
     "places"
 ]
@@ -79,7 +80,7 @@ WSGI_APPLICATION = "geo_api.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "geotech",
+        "NAME": "postgres",
         "USER": "admin",
         "PASSWORD": "admin12345",
         "HOST": "127.0.0.1",
