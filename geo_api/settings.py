@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework_gis",
     "django.contrib.gis",
-    "places"
+    "drf_spectacular",
+    "places",
 ]
 
 MIDDLEWARE = [
@@ -57,8 +59,7 @@ ROOT_URLCONF = "geo_api.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -132,3 +133,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 GDAL_LIBRARY_PATH = "/opt/homebrew/lib/libgdal.dylib"
 GEOS_LIBRARY_PATH = "/opt/homebrew/lib/libgeos_c.dylib"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Geo API",
+    "DESCRIPTION": "Documentation for GEO API",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
