@@ -5,5 +5,6 @@ from places.models import Place
 
 
 @admin.register(Place)
-class ShopAdmin(OSMGeoAdmin):
-    list_display = ("name", "geom")
+class PlaceAdmin(OSMGeoAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name",)
