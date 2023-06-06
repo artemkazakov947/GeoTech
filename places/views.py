@@ -8,12 +8,25 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from places.models import Place
-from places.serializers import PlaceSerializer
+from places.serializers import PlaceSerializer, CreatePlaceSerializer
 
 
 class PlaceViewSet(viewsets.ModelViewSet):
     queryset = Place.objects.all()
     serializer_class = PlaceSerializer
+
+    def get_serializer_class(self):
+        actions = {
+            "create": CreatePlaceSerializer,
+            "list": PlaceSerializer,
+            "destroy": PlaceSerializer,
+            "update": PlaceSerializer,
+            "partial_update": PlaceSerializer,
+            "retrieve": PlaceSerializer,
+            "nearest_place": PlaceSerializer
+        }
+
+        return actions[self.action]
 
     def list(self, request, *args, **kwargs) -> Response:
         """List for all places"""
